@@ -146,11 +146,7 @@ if __name__ == "__main__":
             remember.write(data)
             remember.close()
 
-        elif "102" in query:
-            speak("1zero2 is life")
-            speak("it has 8 important members like life has brain, heart, bone, skin, blood, eyes, ears, mouth")
-            speak("salman as a brain smartest.    renee as a heart full of emotions.   shantanu as a bone storng as he is.    sarang as a skin holding tight everthing.  bhakti as a eyes see's show the path. Raksha as a ears hear and decide what's right for this group. akansha(shau) as a mouth speak for all.  and   lastly ME the blood to keep it alive. ")
-        elif "do you know anything" in query:
+       elif "do you know anything" in query:
             remember = open("data.txt","r")
             speak("you said me to remember that" +remember.read())
         
