@@ -6,6 +6,7 @@ import webbrowser as wb
 import os
 import psutil
 import pyjokes
+import subprocess
 
 
 engine = pyttsx3.init('sapi5')
@@ -54,8 +55,9 @@ def wish_me():
         speak("Good afternoon sir!")
     elif hour >= 18 and hour<24:
         speak("Good Evening sir!")
-    else:
-        speak("Good night sir!")
+    #else:
+    #    speak("Good night sir!")
+    cpu()
     speak("sabrina at your service. please tell me how can i help you sir!?")
 
 
@@ -85,8 +87,9 @@ def send_email(to, content):
     server.sendmail("abzc@gmail.com", to, content)
     server.close()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     wish_me()
+    # cpu()
     while True:
         query = take_command().lower()
 
@@ -129,6 +132,12 @@ if __name__ == "__main__":
         elif "shutdown" in query:
             os.system("shutdown /s /t -1")
 
+        elif "file" in query:
+            speak("which file you want me to open sir?")
+            file= take_command()
+            speak("you want me to open file")
+
+
         elif "restart" in query:
             os.system("shutdown /r /t -1")
         
@@ -137,6 +146,19 @@ if __name__ == "__main__":
 
         elif query == 'stop':
             speak('Bye Sir, Have a good Day')
+            quit()
+
+        elif "open word" in query:
+            os.system("Winword.exe")
+
+        elif "open powerpoint" in query:
+            os.system("POWERPNT.EXE")
+
+        elif "open EXCEL" in query:
+            os.system("EXCEL.EXE")
+
+        elif "open notepad" in query:
+            subprocess.Popen('C:\\Windows\\System32\\notepad.exe')
 
         elif "remember that" in query:
             speak("What should i remember sir?")
@@ -145,8 +167,7 @@ if __name__ == "__main__":
             remember = open("data.txt","w")
             remember.write(data)
             remember.close()
-
-       elif "do you know anything" in query:
+        elif "do you remember anything" in query:
             remember = open("data.txt","r")
             speak("you said me to remember that" +remember.read())
         
